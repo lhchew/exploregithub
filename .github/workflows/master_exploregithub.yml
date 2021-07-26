@@ -6,8 +6,7 @@ name: Build and deploy ASP.Net Core app to Azure Web App - exploregithub
 
 on:
   workflow_run:
-    workflows: 
-      - CodeQL, OSSAR
+    workflows: [CodeQL, OSSAR]
     branches: [master]
     types: 
       - completed
