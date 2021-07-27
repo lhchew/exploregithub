@@ -35,7 +35,7 @@ name: OpenShift
 # https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets
 env:
   # ⬇️ EDIT with your registry and registry path.
-  REGISTRY: docker.io
+  REGISTRY: docker.io/wilsc
   # ⬇️ EDIT with your registry username.
   REGISTRY_USER: wilsc
   REGISTRY_PASSWORD: ${{ secrets.REGISTRY_TOKEN }}
@@ -53,8 +53,8 @@ env:
   OPENSHIFT_NAMESPACE: "github"
 
   # If you wish to manually provide the APP_NAME and TAG, set them here, otherwise they will be auto-detected.
-  APP_NAME: "wilsc/exploregithub"
-  TAG: "latest"
+  APP_NAME: ""
+  TAG: ""
 
 on:
   # https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows
