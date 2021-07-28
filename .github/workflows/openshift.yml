@@ -61,6 +61,7 @@ on:
   push:
     # Edit to the branch(es) you want to build and deploy on each push.
     branches: [ master ]
+    paths: '!.github/**'
 
 jobs:
   openshift-ci-cd:
