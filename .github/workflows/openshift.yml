@@ -44,6 +44,8 @@ env:
   # See https://github.com/redhat-actions/oc-login#readme for how to retrieve these values.
   OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
   OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
+  
+  ENVIRONMENT_SECRET: ${{secrets.ENV_NAME}}
 
   # ⬇️ EDIT with any additional port your application should expose.
   # By default, oc new-app action creates a service to the image's lowest numeric exposed port.
@@ -72,6 +74,7 @@ jobs:
     outputs:
         ROUTE: ${{ steps.deploy-and-expose.outputs.route }}
         SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
+        ENV: ${{ secrets.ENV_NAME }}
 
     steps:
     - name: Check if secrets exists
