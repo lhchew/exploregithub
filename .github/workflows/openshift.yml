@@ -29,7 +29,7 @@
 # Also see our GitHub organization, https://github.com/redhat-actions/
 # ▶️ See a video of how to set up this workflow at https://www.youtube.com/watch?v=6hgBO-1pKho
 
-name: OpenShift
+name: BuildDeployToOpenShift
 
 # ⬇️  Modify the fields marked with ⬇️ to fit your project, and create any secrets that are referenced.
 # https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets
@@ -47,7 +47,7 @@ env:
 
   # ⬇️ EDIT with any additional port your application should expose.
   # By default, oc new-app action creates a service to the image's lowest numeric exposed port.
-  APP_PORT: ""
+  APP_PORT: "8080"
 
   # ⬇️ EDIT if you wish to set the kube context's namespace after login. Leave blank to use the default namespace.
   OPENSHIFT_NAMESPACE: "github"
@@ -61,6 +61,7 @@ on:
   push:
     # Edit to the branch(es) you want to build and deploy on each push.
     branches: [ master ]
+    paths: '!.github/**'
 
 jobs:
   openshift-ci-cd:

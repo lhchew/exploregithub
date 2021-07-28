@@ -6,12 +6,13 @@ name: OSSAR
 on:
   push:
     branches: [ master ]
+    paths: 
+      - '!.github/**'
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ master ]
-  schedule:
-    - cron: '44 12 * * 5'
-
+    paths: 
+      - '!.github/**'    
 jobs:
   OSSAR-Scan:
     # OSSAR runs on windows-latest.
