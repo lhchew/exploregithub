@@ -72,8 +72,7 @@ jobs:
 
     outputs:
         ROUTE: ${{ steps.deploy-and-expose.outputs.route }}
-        SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
-        ENV: ${{ secrets.ENV_NAME }}
+        SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }
 
     steps:
     - name: Check if secrets exists
@@ -84,6 +83,7 @@ jobs:
             REGISTRY_PASSWORD: `${{ secrets.REGISTRY_TOKEN }}`,
             OPENSHIFT_SERVER: `${{ secrets.OPENSHIFT_SERVER }}`,
             OPENSHIFT_TOKEN: `${{ secrets.OPENSHIFT_TOKEN }}`,
+            ENV: `${{ secrets.ENV_NAME }}` ,
           };
 
           const missingSecrets = Object.entries(secrets).filter(([ name, value ]) => {
@@ -91,7 +91,7 @@ jobs:
               core.warning(`Secret "${name}" is not set`);
               return true;
             }
-            core.info(`✔️ Secret "${name}" is set`);
+            core.info(`✔️ Secret "${name}, ${value}" is set`);
             return false;
 
           });
