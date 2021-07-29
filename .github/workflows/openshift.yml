@@ -121,7 +121,7 @@ jobs:
 
     - name: Hadolint Github Action
       # Set output format (choose between `tty`, `json`, `checkstyle`, `codeclimate` or `gitlab_codeclimate`)
-      run: docker run --rm -v $(pwd):/hadolint hadolint/hadolint DockerFile > hadolint-output.json
+      run: docker run --rm -v $(pwd):/hadolint hadolint/hadolint < DockerFile > hadolint-output.json
 
     - name: Upload Hadolint Output
       uses: actions/upload-artifact@v2
