@@ -121,7 +121,8 @@ jobs:
 
     - name: Hadolint Action
       run: docker run --rm -v $(pwd):/src hadolint/hadolint hadolint -f json ./src/Dockerfile > output.json  && cat output.json
-
+      continue-on-error: true
+      
     # https://github.com/redhat-actions/buildah-build#readme
     - name: Build from Dockerfile
       id: image-build
