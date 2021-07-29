@@ -120,7 +120,7 @@ jobs:
         echo "TAG=${GITHUB_SHA::7}" | tee -a $GITHUB_ENV
 
     - name: Hadolint Action
-      run: docker run --rm -v $(pwd):/src hadolint/hadolint hadolint -f json < ./src/Dockerfile
+      run: docker run --rm -v $(pwd):/src hadolint/hadolint hadolint -f json < /src/Dockerfile
 
     # https://github.com/redhat-actions/buildah-build#readme
     - name: Build from Dockerfile
