@@ -119,16 +119,15 @@ jobs:
       run: |
         echo "TAG=${GITHUB_SHA::7}" | tee -a $GITHUB_ENV
 
-    - name: Hadolint Action
+    - name: Hadolint Github Action
       # You may pin to the exact commit or the version.
-      # uses: hadolint/hadolint-action@c27bd9edc1e95eed30474db8f295ff5807ebca14
-      uses: hadolint/hadolint-action@v1.5.0
+      # uses: jbergstroem/hadolint-gh-action@de426daef8d3c20de8e3fabd8dbada8e38f8b948
+      uses: jbergstroem/hadolint-gh-action@v1.7.0
       with:
-        # The path to the Dockerfile to lint
-        dockerfile: ./Dockerfile # optional, default is Dockerfile
-        # The output format, one of [tty (default) | json | checkstyle | codeclimate | gitlab_codeclimate ]
+        # Set output format (choose between `tty`, `json`, `checkstyle`, `codeclimate` or `gitlab_codeclimate`)
+        output_format: json
 
-        # https://github.com/redhat-actions/buildah-build#readme
+    # https://github.com/redhat-actions/buildah-build#readme
     - name: Build from Dockerfile
       id: image-build
       uses: redhat-actions/buildah-build@v2
