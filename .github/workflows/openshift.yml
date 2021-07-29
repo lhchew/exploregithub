@@ -120,12 +120,11 @@ jobs:
         echo "TAG=${GITHUB_SHA::7}" | tee -a $GITHUB_ENV
 
     - name: Hadolint Action
-      run: docker run --rm -v $(pwd):/hadolint hadolint/hadolint file:///hadolint hadolint -f json - < ./Dockerfile > output.json
+      run: docker run --rm hadolint/hadolint  hadolint -f json -< ./Dockerfile > output.json
 
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
-        name: Hadolint
         path: output.json
       if: always()                        # what is this for?
 
