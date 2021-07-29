@@ -120,10 +120,8 @@ jobs:
         echo "TAG=${GITHUB_SHA::7}" | tee -a $GITHUB_ENV
 
     - name: Hadolint Github Action
-      uses: actions/checkout@v2
-      with:
-        # Set output format (choose between `tty`, `json`, `checkstyle`, `codeclimate` or `gitlab_codeclimate`)
-        run: docker run --rm -v $(pwd):/hadolint hadolint/hadolint DockerFile > hadolint-output.json
+      # Set output format (choose between `tty`, `json`, `checkstyle`, `codeclimate` or `gitlab_codeclimate`)
+      run: docker run --rm -v $(pwd):/hadolint hadolint/hadolint DockerFile > hadolint-output.json
 
     - name: Upload Hadolint Output
       uses: actions/upload-artifact@v2
