@@ -7,6 +7,15 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
+
+
+RUN apt-get update \
+ && apt-get install -y \
+    gcc \
+    fortunes \
+    cowsay \
+ && pip install apache-airflow[crypto,postgres]
+
 COPY ["exploregithub.csproj", "."]
 RUN dotnet restore "./exploregithub.csproj"
 COPY . .
