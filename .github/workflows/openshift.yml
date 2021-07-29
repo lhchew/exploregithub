@@ -121,9 +121,8 @@ jobs:
 
     - name: Hadolint Action
       run: docker run --rm hadolint/hadolint  hadolint -f json -< ./Dockerfile > output.json
-
-    - name: Upload
-      uses: actions/upload-artifact@v2
+      
+    - uses: actions/upload-artifact@v2
       with:
         path: output.json
       if: always()                        # what is this for?
