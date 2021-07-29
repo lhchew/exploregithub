@@ -120,9 +120,15 @@ jobs:
         echo "TAG=${GITHUB_SHA::7}" | tee -a $GITHUB_ENV
 
     - name: Hadolint Action
-      run: docker run --rm -v $(pwd):/src hadolint/hadolint hadolint -f json ./src/Dockerfile > output.json  && cat output.json
+      run: docker run --rm -v $(pwd):/src hadolint/hadolint hadolint -f json ./src/Dockerfile > output.json
       continue-on-error: true
-      
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Hadolint
+        path: output.json
+      if: always()                        # what is this for?
+
     # https://github.com/redhat-actions/buildah-build#readme
     - name: Build from Dockerfile
       id: image-build
